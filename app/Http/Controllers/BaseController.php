@@ -4,20 +4,31 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+/**
+ * BaseController
+ */
 abstract class BaseController extends Controller
 {
     protected $class;
 
     /**
-     * index resource
+     * Index resources
+     *
+     * @param Request $request
+     *
+     * @return \Illuminate\Http\Response
      */
     public function index(Request $request)
     {
-        return $this->class::paginate($request->per_page);
+        return response()->json($this->class::paginate($request->per_page));
     }
 
     /**
+     * Store resource
      *
+     * @param Request $request
+     *
+     * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
@@ -25,7 +36,11 @@ abstract class BaseController extends Controller
     }
 
     /**
-     * show specific resource
+     * Show resource
+     *
+     * @param int $id
+     *
+     * @return \Illuminate\Http\Response
      */
     public function show(int $id)
     {
@@ -38,7 +53,12 @@ abstract class BaseController extends Controller
     }
 
     /**
-     * update specific resource
+     * Update resource
+     *
+     * @param int $id
+     * @param Request $request
+     *
+     * @return \Illuminate\Http\Response
      */
     public function update(int $id, Request $request)
     {
@@ -53,7 +73,11 @@ abstract class BaseController extends Controller
     }
 
     /**
-     * destroy specific resource
+     * Destroy resource
+     *
+     * @param int $id
+     *
+     * @return \Illuminate\Http\Response
      */
     public function destroy(int $id)
     {

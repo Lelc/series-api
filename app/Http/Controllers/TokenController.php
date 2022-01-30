@@ -7,8 +7,18 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use \Firebase\JWT\JWT;
 
+/**
+ * TokenController
+ */
 class TokenController extends Controller
 {
+    /**
+     * Create Token
+     *
+     * @param Request $request
+     *
+     * @return Array
+     */
     public function createToken(Request $request)
     {
         $this->validate($request, [
